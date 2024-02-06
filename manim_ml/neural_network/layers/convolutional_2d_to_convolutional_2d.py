@@ -64,10 +64,10 @@ class Filters(VGroup):
     def make_input_feature_map_rectangles(self):
         rectangles = []
         rectangle_width = (
-            self.output_layer.filter_size[0] * self.output_layer.cell_width
+            self.output_layer.filter_size[0] * self.input_layer.cell_width
         )
         rectangle_height = (
-            self.output_layer.filter_size[1] * self.output_layer.cell_width
+            self.output_layer.filter_size[1] * self.input_layer.cell_width
         )
         filter_color = self.output_layer.filter_color
 
@@ -132,7 +132,7 @@ class Filters(VGroup):
                 grid_ystep=self.cell_width,
                 grid_stroke_width=self.stroke_width / 2,
                 grid_stroke_color=filter_color,
-                show_grid_lines=self.show_grid_lines,
+                show_grid_lines=False#self.show_grid_lines,
             )
             # Rotate the rectangle
             rectangle.rotate(
@@ -310,7 +310,7 @@ class Convolutional2DToConvolutional2D(ConnectiveLayer, ThreeDLayer):
         self.num_input_feature_maps = self.input_layer.num_feature_maps
         self.num_output_feature_maps = self.output_layer.num_feature_maps
         self.cell_width = self.output_layer.cell_width
-        self.stride = self.output_layer.stride
+        self.stride = self.input_layer.stride
         self.padding = self.input_layer.padding
         self.filter_opacity = filter_opacity
         self.cell_width = cell_width

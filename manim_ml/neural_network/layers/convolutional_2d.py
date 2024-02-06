@@ -224,6 +224,7 @@ class Convolutional2DLayer(VGroupNeuralNetworkLayer, ThreeDLayer):
                 fill_opacity=self.fill_opacity,
                 padding=self.padding,
                 padding_dashed=self.padding_dashed,
+                show_grid_lines=self.show_grid_lines
             )
             # Move the feature map
             feature_map.move_to([0, 0, filter_index * self.filter_spacing])
